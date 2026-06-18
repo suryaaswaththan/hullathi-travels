@@ -1,0 +1,155 @@
+"use client";
+
+import Link from "next/link";
+import { ArrowRight, ChevronDown } from "lucide-react";
+import { motion } from "framer-motion";
+import { site, waLink, asset } from "@/lib/site";
+import { Button } from "@/components/ui/button";
+import { WhatsAppIcon } from "@/components/site/icons";
+
+const stats = [
+  { value: site.travellers, label: "Happy travellers" },
+  { value: "3", label: "South Indian states" },
+  { value: "24/7", label: "On-call support" },
+  { value: "100%", label: "Private journeys" },
+];
+
+const ease = [0.16, 1, 0.3, 1] as const;
+
+export function Hero() {
+  return (
+    <section className="relative w-full overflow-hidden">
+      {/* Background video — covers the full hero, plays as-is */}
+      <video
+        className="absolute inset-0 h-full w-full object-cover"
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="auto"
+        poster={asset("/images/hero-poster.jpg")}
+        disablePictureInPicture
+        disableRemotePlayback
+      >
+        <source src={asset("/video/hero-bg.mp4")} type="video/mp4" />
+      </video>
+      <div className="absolute inset-0 bg-primary-dark/45" />
+      <div className="absolute inset-0 bg-gradient-to-b from-primary-dark/55 via-transparent to-primary-dark/80" />
+
+      {/* Block 1 — brand name + tagline (first view) */}
+      <div className="relative z-10 flex min-h-[100svh] flex-col items-center justify-center px-5 text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 14, filter: "blur(8px)" }}
+          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          transition={{ duration: 0.8, ease }}
+          className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-4 py-1.5 text-[11px] font-medium uppercase tracking-[0.22em] text-white backdrop-blur-md"
+        >
+          <span className="h-1.5 w-1.5 rounded-full bg-accent" />
+          {site.motto}
+        </motion.div>
+
+        <motion.h1
+          initial={{ opacity: 0, y: 18, filter: "blur(10px)" }}
+          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          transition={{ duration: 0.9, delay: 0.12, ease }}
+          className="mt-6 max-w-5xl text-balance font-display text-5xl font-semibold leading-[1.05] text-white [text-shadow:0_2px_40px_rgba(0,0,0,0.55)] sm:text-7xl lg:text-8xl"
+        >
+          Hullathi Tours &amp; Travels
+        </motion.h1>
+
+        <motion.p
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.9, delay: 0.3, ease }}
+          className="mt-6 text-base font-medium uppercase tracking-[0.42em] text-accent sm:text-xl sm:tracking-[0.5em]"
+        >
+          Explore · Experience · Enjoy
+        </motion.p>
+
+        {/* Scroll cue */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1 }}
+          className="absolute bottom-28 left-1/2 -translate-x-1/2 md:bottom-10"
+        >
+          <motion.span
+            animate={{ y: [0, 9, 0] }}
+            transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
+            className="flex flex-col items-center gap-1 text-white/75"
+          >
+            <span className="text-[10px] uppercase tracking-[0.25em]">Scroll</span>
+            <ChevronDown className="h-5 w-5" />
+          </motion.span>
+        </motion.div>
+      </div>
+
+      {/* Block 2 — value prop + CTAs + stats (revealed on scroll) */}
+      <div className="relative z-10 flex min-h-[88svh] flex-col items-center justify-center px-5 pb-28 pt-10 text-center md:pb-20">
+        <motion.h2
+          initial={{ opacity: 0, y: 18 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.7, ease }}
+          className="max-w-3xl text-balance text-white [text-shadow:0_2px_30px_rgba(0,0,0,0.5)]"
+        >
+          Explore the magic of South India
+        </motion.h2>
+
+        <motion.p
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.7, delay: 0.1, ease }}
+          className="mx-auto mt-5 max-w-2xl text-pretty text-base leading-relaxed text-white/90 sm:text-lg"
+        >
+          Hand-crafted, private holidays across Tamil Nadu, Kerala and Karnataka
+          — stay, breakfast and transport included. Crafted by local hosts in
+          Ooty, the Nilgiris.
+        </motion.p>
+
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.7, delay: 0.18, ease }}
+          className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row"
+        >
+          <Button asChild variant="accent" size="lg">
+            <Link href="/packages">
+              View packages <ArrowRight className="h-4 w-4" />
+            </Link>
+          </Button>
+          <Button asChild variant="light" size="lg">
+            <a
+              href={waLink(`Hi ${site.fullName}, I'd like to plan a trip.`)}
+              target="_blank"
+              rel="noreferrer"
+            >
+              <WhatsAppIcon className="h-5 w-5 text-[#25d366]" /> Enquire on WhatsApp
+            </a>
+          </Button>
+        </motion.div>
+
+        <motion.dl
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.7, delay: 0.28, ease }}
+          className="mx-auto mt-14 grid w-full max-w-2xl grid-cols-2 gap-px overflow-hidden rounded-2xl border border-white/15 bg-white/10 backdrop-blur-md sm:grid-cols-4"
+        >
+          {stats.map((s) => (
+            <div key={s.label} className="px-4 py-5 text-center">
+              <dt className="font-display text-2xl text-white sm:text-3xl">
+                {s.value}
+              </dt>
+              <dd className="mt-1 text-[11px] uppercase tracking-wider text-white/75">
+                {s.label}
+              </dd>
+            </div>
+          ))}
+        </motion.dl>
+      </div>
+    </section>
+  );
+}

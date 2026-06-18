@@ -1,36 +1,64 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Hullathi Tour's and Travels — Website
 
-## Getting Started
+A premium, multi-page marketing site for **Hullathi Tour's and Travels**, a
+family-run tour operator in Ooty (the Nilgiris) offering curated holiday
+packages across **Tamil Nadu, Kerala & Karnataka**.
 
-First, run the development server:
+Built to the project's `DESIGN.md` (Nilgiri-hills palette, Playfair Display +
+Outfit) and `PRODUCT.md` (premium, frictionless, conversion-focused).
+
+## Tech stack
+
+- **Next.js 14** (App Router) + **TypeScript**
+- **Tailwind CSS** with OKLCH design tokens + shadcn-style structure
+  (`components/ui`, `lib/utils`)
+- **Framer Motion** for animations (blur-fade reveals, scroll-expand hero,
+  lightbox, mobile menu)
+- **lucide-react** icons
+
+## Pages
+
+| Route        | Highlights |
+|--------------|-----------|
+| `/`          | Scroll-to-expand video hero (Munnar 4K), destinations, inclusions guarantee, featured packages, gallery teaser, Google-style reviews, CTA |
+| `/about`     | Brand story, values, USPs, inclusions |
+| `/packages`  | All 6 duration packages (1N/2D → 6N/7D) + vehicle fleet |
+| `/gallery`   | Masonry gallery with keyboard-navigable lightbox |
+| `/contact`   | Split-screen office details + map + 7-field enquiry form |
+
+## Key features
+
+- **Mobile-first**: responsive layouts, an accessible bottom dock
+  (Home / Packages / Gallery / WhatsApp), full-screen mobile menu.
+- **Frictionless conversion**: floating WhatsApp + Call panel (desktop),
+  enquiry form that composes a prefilled WhatsApp message or email.
+- **Elegant motion**: scroll-expand hero, in-view blur-fade reveals, gold
+  overlay card hovers (no image zoom, per the design spec).
+- **Accessibility**: semantic HTML, ARIA labels, keyboard lightbox,
+  `prefers-reduced-motion` support.
+
+## Editing content
+
+All business data (phone, WhatsApp, email, address, packages, destinations,
+reviews, gallery) lives in **`src/lib/site.ts`** — edit there, no component
+changes needed.
+
+Images are in `public/images/`, the hero video in `public/video/`, and the
+logo in `public/brand/`.
+
+## Getting started
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev      # http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Production:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm run build
+npm run start
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+> Note: don't run `next dev` and `next start` at the same time — they share the
+> `.next/` directory and will clobber each other's build output.

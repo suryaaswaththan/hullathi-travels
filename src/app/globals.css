@@ -3,25 +3,91 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Brand Colors */
+  --color-primary: oklch(0.28 0.06 145); /* Deep Forest Green */
+  --color-primary-dark: oklch(0.18 0.04 145); /* Deepest Forest / Charcoal */
+  --color-accent: oklch(0.84 0.15 91.3); /* Honey Amber / Golden Hour */
+  --color-accent-light: oklch(0.96 0.04 91.3); /* Pale Gold */
+
+  /* Neutral Surface Ramps */
+  --color-bg: oklch(1 0 0); /* Pure White */
+  --color-surface: oklch(0.985 0.004 145); /* Mist White */
+  --color-border: oklch(0.92 0.008 145); /* Soft border line */
+
+  /* Ink (Typography) */
+  --color-ink: oklch(0.22 0.02 145); /* Slate Forest Black */
+  --color-muted: oklch(0.52 0.015 145); /* Forest Grey */
+  --color-white: oklch(1 0 0);
+
+  /* Transitions & Shadows */
+  --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  --shadow-premium: 0 10px 30px -10px oklch(0.18 0.04 145 / 0.06);
+  --shadow-hover: 0 20px 40px -15px oklch(0.18 0.04 145 / 0.12);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+    overflow-x: clip;
+  }
+  body {
+    background-color: var(--color-bg);
+    color: var(--color-ink);
+    font-family: var(--font-sans), system-ui, sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-x: clip;
+    max-width: 100%;
+  }
+  h1, h2, h3, h4 {
+    font-family: var(--font-display), Georgia, serif;
+    letter-spacing: -0.01em;
+    line-height: 1.08;
+    font-weight: 600;
+  }
+  h1 {
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+  }
+  h2 {
+    font-size: clamp(2rem, 3.5vw, 3rem);
+  }
+  h3 {
+    font-size: clamp(1.5rem, 2vw, 1.8rem);
+  }
+  ::selection {
+    background: var(--color-accent);
+    color: var(--color-primary-dark);
   }
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+@layer components {
+  .container-wide {
+    @apply mx-auto w-full max-w-[1280px] px-5 sm:px-8;
+  }
+  .eyebrow {
+    @apply inline-flex items-center gap-2 text-xs font-medium uppercase tracking-[0.18em] text-primary;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
   }
 }
