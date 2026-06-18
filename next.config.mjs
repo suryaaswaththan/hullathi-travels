@@ -6,7 +6,9 @@ const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
 
 const nextConfig = {
   output: "export", // static HTML export -> ./out (works on GitHub Pages)
-  images: { unoptimized: true }, // no Next image server on a static host
+  // Custom loader prefixes basePath onto image src (unoptimized:true does not),
+  // so images resolve under the project sub-path. Also satisfies static export.
+  images: { loader: "custom", loaderFile: "./image-loader.js" },
   basePath,
   trailingSlash: true, // emit /about/index.html so GH Pages routes cleanly
 };
