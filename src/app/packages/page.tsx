@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { BedDouble, Coffee, Car, Users, Home as HomeIcon } from "lucide-react";
+import { ColorIcon } from "@/components/site/color-icon";
 import { PageHero } from "@/components/site/page-hero";
 import { SectionHeading } from "@/components/site/section-heading";
 import { PackageCard } from "@/components/site/package-card";
@@ -15,10 +15,10 @@ export const metadata: Metadata = {
 };
 
 const included = [
-  { icon: BedDouble, label: "Hand-picked stays" },
-  { icon: Coffee, label: "Daily breakfast" },
-  { icon: Car, label: "Private vehicle + driver" },
-  { icon: Users, label: "Tailored to your group" },
+  { icon: "bed", label: "Hand-picked stays" },
+  { icon: "hot-beverage", label: "Daily breakfast" },
+  { icon: "automobile", label: "Private vehicle + driver" },
+  { icon: "busts-in-silhouette", label: "Tailored to your group" },
 ];
 
 export default function PackagesPage() {
@@ -39,9 +39,7 @@ export default function PackagesPage() {
               key={it.label}
               className="flex items-center gap-3 text-sm font-medium text-ink"
             >
-              <span className="neon-icon inline-grid shrink-0 place-items-center text-primary">
-                <it.icon className="h-7 w-7" strokeWidth={1.75} />
-              </span>
+              <ColorIcon name={it.icon} size={34} />
               {it.label}
             </div>
           ))}
@@ -78,7 +76,7 @@ export default function PackagesPage() {
                 key={s}
                 className="inline-flex items-center gap-2 rounded-full border border-border bg-bg px-4 py-2.5 text-sm font-medium text-ink"
               >
-                <HomeIcon className="h-4 w-4 text-primary" />
+                <ColorIcon name="house" size={20} float={false} />
                 {s}
               </span>
             ))}

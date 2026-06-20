@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
@@ -50,12 +50,19 @@ function isBackgroundDark(x: number, y: number): boolean {
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [bgDark, setBgDark] = useState(true);
+  const [hidden, setHidden] = useState(false);
+  const lastY = useRef(0);
   const pathname = usePathname();
 
   useEffect(() => {
     const onScroll = () => {
-      setScrolled(window.scrollY > 24);
+      const y = window.scrollY;
+      setScrolled(y > 24);
       setBgDark(isBackgroundDark(window.innerWidth / 2, 84));
+      // Hide when scrolling down (past the hero crest), reveal when scrolling up.
+      if (y > lastY.current && y > 120) setHidden(true);
+      else if (y < lastY.current) setHidden(false);
+      lastY.current = y;
     };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
@@ -67,7 +74,12 @@ export function Navbar() {
   }, [pathname]);
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 px-3 pt-3 md:px-5 md:pt-4">
+    <header
+      className={cn(
+        "fixed inset-x-0 top-0 z-50 px-3 pt-3 transition-transform duration-500 ease-smooth md:px-5 md:pt-4",
+        hidden ? "-translate-y-[150%]" : "translate-y-0"
+      )}
+    >
       <nav
         className={cn(
           "container mx-auto flex h-14 items-center justify-between gap-3 rounded-2xl px-3 py-2 transition-all duration-500 ease-smooth md:h-16 md:px-5",

@@ -79,19 +79,41 @@
     -ms-overflow-style: none;
     scrollbar-width: none;
   }
-  /* Background-less icons with a pulsing neon glow (colour = currentColor). */
-  .neon-icon {
-    animation: neon-pulse 2.6s ease-in-out infinite;
+  /* Coordinated colour icons — a gentle, living bob so they don't feel static. */
+  .icon-float {
+    animation: icon-float 3.6s ease-in-out infinite;
+  }
+  /* Light sweep across a button on hover. */
+  .btn-shine {
+    position: relative;
+    overflow: hidden;
+  }
+  .btn-shine::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      120deg,
+      transparent 28%,
+      rgba(255, 255, 255, 0.45) 50%,
+      transparent 72%
+    );
+    transform: translateX(-130%);
+    transition: transform 0.7s ease;
+    pointer-events: none;
+  }
+  .btn-shine:hover::after {
+    transform: translateX(130%);
   }
 }
 
-@keyframes neon-pulse {
+@keyframes icon-float {
   0%,
   100% {
-    filter: drop-shadow(0 0 1px currentColor) drop-shadow(0 0 2px currentColor);
+    transform: translateY(0);
   }
   50% {
-    filter: drop-shadow(0 0 5px currentColor) drop-shadow(0 0 11px currentColor);
+    transform: translateY(-3px);
   }
 }
 

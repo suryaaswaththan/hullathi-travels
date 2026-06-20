@@ -1,6 +1,7 @@
 import Link from "next/link";
-import { ArrowRight, Star, ShieldCheck, MapPin } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Hero } from "@/components/site/hero";
+import { ColorIcon } from "@/components/site/color-icon";
 import { SectionHeading } from "@/components/site/section-heading";
 import { Destinations } from "@/components/site/destinations";
 import { DestinationsCarousel } from "@/components/site/destinations-carousel";
@@ -24,16 +25,20 @@ export default function HomePage() {
       <section className="border-y border-border bg-surface">
         <div className="container-wide flex flex-wrap items-center justify-center gap-x-10 gap-y-4 py-5 text-sm text-muted">
           <span className="flex items-center gap-2">
-            <Star className="h-4 w-4 text-accent" fill="var(--color-accent)" />
+            <span className="flex items-center gap-0.5">
+              {Array.from({ length: 5 }).map((_, i) => (
+                <ColorIcon key={i} name="star" size={16} float={false} className="text-accent" />
+              ))}
+            </span>
             5.0 rated by travellers
           </span>
           <span className="flex items-center gap-2">
-            <ShieldCheck className="h-4 w-4 text-primary" /> Stay · Breakfast ·
+            <ColorIcon name="shield" size={20} float={false} /> Stay · Breakfast ·
             Vehicle included
           </span>
           <span className="flex items-center gap-2">
-            <MapPin className="h-4 w-4 text-primary" /> Locally run from Ooty,
-            the Nilgiris
+            <ColorIcon name="round-pushpin" size={20} float={false} /> Locally run
+            from Ooty, the Nilgiris
           </span>
         </div>
       </section>

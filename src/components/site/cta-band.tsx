@@ -38,17 +38,27 @@ export function CtaBand() {
           </BlurFade>
           <BlurFade delay={0.24}>
             <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
-              <Button asChild variant="accent" size="lg">
+              <Button
+                asChild
+                variant="accent"
+                size="lg"
+                className="btn-shine h-14 px-9 text-base transition-transform hover:-translate-y-0.5 sm:h-16"
+              >
                 <Link href="/contact">Start an enquiry</Link>
               </Button>
-              <Button asChild variant="light" size="lg">
+              <Button
+                asChild
+                variant="light"
+                size="lg"
+                className="btn-shine h-14 px-9 text-base transition-transform hover:-translate-y-0.5 sm:h-16"
+              >
                 <a href={waLink(`Hi ${site.fullName}, I'd like to plan a trip.`)} target="_blank" rel="noreferrer">
                   <WhatsAppIcon className="h-5 w-5 text-[#25d366]" /> WhatsApp us
                 </a>
               </Button>
               <CallButton
                 ariaLabel="Call us"
-                className="inline-flex h-13 items-center justify-center gap-2 rounded-full px-8 text-base font-medium text-white transition-colors hover:bg-white/10"
+                className="btn-shine inline-flex h-14 items-center justify-center gap-2 rounded-full border border-white/25 px-9 text-base font-medium text-white transition-all hover:-translate-y-0.5 hover:bg-white/10 sm:h-16"
               >
                 <PhoneFilledIcon className="h-5 w-5" /> Call us
               </CallButton>

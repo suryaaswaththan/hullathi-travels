@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
-import { MapPin, Mail, Clock, ArrowUpRight } from "lucide-react";
+import { Mail, ArrowUpRight } from "lucide-react";
 import { PageHero } from "@/components/site/page-hero";
-import { EnquiryForm } from "@/components/site/enquiry-form";
+import { ContactMessages } from "@/components/site/contact-messages";
+import { ColorIcon } from "@/components/site/color-icon";
 import { BlurFade } from "@/components/ui/blur-fade";
 import { WhatsAppIcon, PhoneFilledIcon } from "@/components/site/icons";
 import { site, mailLink, waLink } from "@/lib/site";
@@ -107,7 +108,7 @@ export default function ContactPage() {
             <BlurFade delay={0.2}>
               <div className="mt-6 rounded-2xl bg-surface p-5">
                 <div className="flex gap-3">
-                  <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-primary" />
+                  <ColorIcon name="round-pushpin" size={22} float={false} className="mt-0.5" />
                   <div>
                     <p className="font-medium text-ink">{site.fullName}</p>
                     <p className="text-xs text-accent">
@@ -121,7 +122,7 @@ export default function ContactPage() {
                   </div>
                 </div>
                 <div className="mt-4 flex items-center gap-3 border-t border-border pt-4">
-                  <Clock className="h-5 w-5 shrink-0 text-primary" />
+                  <ColorIcon name="alarm-clock" size={22} float={false} />
                   <p className="text-sm text-muted">
                     <span className="font-medium text-ink">{site.hours}</span> —
                     we never sleep on your holiday plans.
@@ -144,15 +145,17 @@ export default function ContactPage() {
             </BlurFade>
           </div>
 
-          {/* Right — form card */}
+          {/* Right — quick message boxes */}
           <BlurFade delay={0.12}>
-            <div className="rounded-3xl border border-border bg-bg p-6 shadow-premium sm:p-8">
-              <h3 className="font-display text-2xl text-ink">Send an enquiry</h3>
-              <p className="mt-1.5 text-sm text-muted">
-                Fill this in and we&apos;ll craft a tailored itinerary for you.
+            <div>
+              <h2 className="text-balance font-display text-3xl text-ink sm:text-4xl">
+                Skip the form, let&apos;s talk
+              </h2>
+              <p className="mt-2 text-muted">
+                Type a quick message and send it straight to us — no long forms.
               </p>
               <div className="mt-6">
-                <EnquiryForm />
+                <ContactMessages />
               </div>
             </div>
           </BlurFade>

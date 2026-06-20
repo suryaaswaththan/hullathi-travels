@@ -1,17 +1,10 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import {
-  Leaf,
-  HandHeart,
-  Sparkles,
-  Clock,
-  MapPin,
-  ShieldCheck,
-} from "lucide-react";
 import { PageHero } from "@/components/site/page-hero";
 import { SectionHeading } from "@/components/site/section-heading";
 import { Inclusions } from "@/components/site/inclusions";
 import { CtaBand } from "@/components/site/cta-band";
+import { ColorIcon } from "@/components/site/color-icon";
 import { BlurFade } from "@/components/ui/blur-fade";
 import { site } from "@/lib/site";
 
@@ -23,27 +16,27 @@ export const metadata: Metadata = {
 
 const values = [
   {
-    icon: Leaf,
+    icon: "herb",
     title: "Serene & nature-infused",
     desc: "We design around the quiet — misty hills, green estates and unhurried mornings, not crowded checklists.",
   },
   {
-    icon: HandHeart,
+    icon: "handshake",
     title: "Trustworthy & local",
     desc: "Rooted in Ooty, we know the roads, the seasons and the people. You travel with insiders, not a call centre.",
   },
   {
-    icon: Sparkles,
+    icon: "sparkles",
     title: "Sophisticated & premium",
     desc: "Considered stays, clean private vehicles and thoughtful touches — an elevated experience, end to end.",
   },
 ];
 
 const usps = [
-  { icon: ShieldCheck, label: "Stay, breakfast & private vehicle in every package" },
-  { icon: Clock, label: "24/7 reachable on call & WhatsApp" },
-  { icon: MapPin, label: "Local Ooty experts across TN, Kerala & Karnataka" },
-  { icon: HandHeart, label: "Private, family-run service — never mass tourism" },
+  { icon: "shield", label: "Stay, breakfast & private vehicle in every package" },
+  { icon: "alarm-clock", label: "24/7 reachable on call & WhatsApp" },
+  { icon: "round-pushpin", label: "Local Ooty experts across TN, Kerala & Karnataka" },
+  { icon: "handshake", label: "Private, family-run service — never mass tourism" },
 ];
 
 export default function AboutPage() {
@@ -142,9 +135,7 @@ export default function AboutPage() {
             {values.map((v, i) => (
               <BlurFade key={v.title} delay={i * 0.1}>
                 <div className="h-full rounded-2xl border border-border bg-bg p-7 transition-colors duration-500 hover:border-accent">
-                  <span className="neon-icon inline-grid place-items-center text-primary">
-                    <v.icon className="h-9 w-9" strokeWidth={1.75} />
-                  </span>
+                  <ColorIcon name={v.icon} size={46} />
                   <h3 className="mt-5 font-display text-xl text-ink">
                     {v.title}
                   </h3>
@@ -168,9 +159,7 @@ export default function AboutPage() {
           {usps.map((u, i) => (
             <BlurFade key={u.label} delay={i * 0.08}>
               <div className="flex items-center gap-4 rounded-2xl border border-border bg-bg p-5">
-                <span className="neon-icon inline-grid shrink-0 place-items-center text-primary">
-                  <u.icon className="h-7 w-7" strokeWidth={1.75} />
-                </span>
+                <ColorIcon name={u.icon} size={36} />
                 <p className="text-[15px] font-medium text-ink">{u.label}</p>
               </div>
             </BlurFade>

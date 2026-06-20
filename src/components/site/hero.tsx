@@ -18,26 +18,29 @@ const ease = [0.16, 1, 0.3, 1] as const;
 
 export function Hero() {
   return (
-    <section className="relative w-full overflow-hidden">
-      {/* Background video — covers the full hero, plays as-is */}
-      <video
-        className="absolute inset-0 h-full w-full object-cover"
-        autoPlay
-        muted
-        loop
-        playsInline
-        preload="auto"
-        poster={asset("/images/hero-poster.jpg")}
-        disablePictureInPicture
-        disableRemotePlayback
-      >
-        <source src={asset("/video/hero-bg.mp4")} type="video/mp4" />
-      </video>
-      <div className="absolute inset-0 bg-primary-dark/45" />
-      <div className="absolute inset-0 bg-gradient-to-b from-primary-dark/55 via-transparent to-primary-dark/80" />
+    <section className="relative w-full">
+      {/* Landing view — exactly one viewport tall, so the 4K video stays crisp (no stretch) */}
+      <div className="relative h-[100svh] overflow-hidden">
+        <video
+          className="absolute inset-0 h-full w-full object-cover"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+          poster={asset("/images/hero-poster.jpg")}
+          disablePictureInPicture
+          disableRemotePlayback
+        >
+          <source src={asset("/video/hero-bg.mp4")} type="video/mp4" />
+        </video>
+        <div className="absolute inset-0 bg-primary-dark/45" />
+        <div className="absolute inset-0 bg-gradient-to-b from-primary-dark/55 via-transparent to-primary-dark/80" />
+        {/* Bottom fade — the video melts into the dark block below for a smooth cut */}
+        <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-b from-transparent to-primary-dark" />
 
-      {/* Block 1 — brand name + tagline (first view) */}
-      <div className="relative z-10 flex min-h-[100svh] flex-col items-center justify-center px-5 text-center">
+        {/* Block 1 — brand name + tagline */}
+        <div className="relative z-10 flex h-full flex-col items-center justify-center px-5 text-center">
         <motion.div
           initial={{ opacity: 0, y: 14, filter: "blur(8px)" }}
           animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
@@ -82,10 +85,11 @@ export function Hero() {
             <ChevronDown className="h-5 w-5" />
           </motion.span>
         </motion.div>
+        </div>
       </div>
 
-      {/* Block 2 — value prop + CTAs + stats (revealed on scroll) */}
-      <div className="relative z-10 flex min-h-[88svh] flex-col items-center justify-center px-5 pb-28 pt-10 text-center md:pb-20">
+      {/* Block 2 — value prop + CTAs + stats, on a solid dark backing */}
+      <div className="relative z-10 flex min-h-[88svh] flex-col items-center justify-center bg-primary-dark px-5 pb-28 pt-10 text-center md:pb-20">
         <motion.h2
           initial={{ opacity: 0, y: 18 }}
           whileInView={{ opacity: 1, y: 0 }}
