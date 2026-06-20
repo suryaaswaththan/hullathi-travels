@@ -79,6 +79,20 @@
     -ms-overflow-style: none;
     scrollbar-width: none;
   }
+  /* Background-less icons with a pulsing neon glow (colour = currentColor). */
+  .neon-icon {
+    animation: neon-pulse 2.6s ease-in-out infinite;
+  }
+}
+
+@keyframes neon-pulse {
+  0%,
+  100% {
+    filter: drop-shadow(0 0 1px currentColor) drop-shadow(0 0 2px currentColor);
+  }
+  50% {
+    filter: drop-shadow(0 0 5px currentColor) drop-shadow(0 0 11px currentColor);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

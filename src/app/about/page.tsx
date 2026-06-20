@@ -142,8 +142,8 @@ export default function AboutPage() {
             {values.map((v, i) => (
               <BlurFade key={v.title} delay={i * 0.1}>
                 <div className="h-full rounded-2xl border border-border bg-bg p-7 transition-colors duration-500 hover:border-accent">
-                  <span className="grid h-12 w-12 place-items-center rounded-full bg-accent-light text-primary">
-                    <v.icon className="h-6 w-6" />
+                  <span className="neon-icon inline-grid place-items-center text-primary">
+                    <v.icon className="h-9 w-9" strokeWidth={1.75} />
                   </span>
                   <h3 className="mt-5 font-display text-xl text-ink">
                     {v.title}
@@ -168,8 +168,8 @@ export default function AboutPage() {
           {usps.map((u, i) => (
             <BlurFade key={u.label} delay={i * 0.08}>
               <div className="flex items-center gap-4 rounded-2xl border border-border bg-bg p-5">
-                <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-primary text-white">
-                  <u.icon className="h-5 w-5" />
+                <span className="neon-icon inline-grid shrink-0 place-items-center text-primary">
+                  <u.icon className="h-7 w-7" strokeWidth={1.75} />
                 </span>
                 <p className="text-[15px] font-medium text-ink">{u.label}</p>
               </div>

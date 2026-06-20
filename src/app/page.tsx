@@ -58,7 +58,6 @@ export default function HomePage() {
       <section className="bg-surface">
         <div className="container-wide py-16 md:py-24">
           <SectionHeading
-            align="center"
             eyebrow="The inclusions guarantee"
             title="Three things, always taken care of"
             description="No hidden extras. Every Hullathi Tours & Travels package is built around the same three pillars — so you only ever think about the view."
@@ -103,7 +102,6 @@ export default function HomePage() {
       <section className="overflow-hidden bg-surface">
         <div className="container-wide py-16 md:py-24">
           <SectionHeading
-            align="center"
             eyebrow="Travel in comfort"
             title="All types of vehicles available"
             description="Sedan, SUV, Innova, Tempo Traveller or bus — clean, well-maintained vehicles with experienced local drivers, matched to your group size."
@@ -117,7 +115,6 @@ export default function HomePage() {
       {/* Reviews */}
       <section className="container-wide py-16 md:py-24">
         <SectionHeading
-          align="center"
           eyebrow="Google reviews"
           title="Loved by travellers across India"
           description="Real words from families, couples and groups who let us plan their South India escape."

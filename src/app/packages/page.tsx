@@ -39,8 +39,8 @@ export default function PackagesPage() {
               key={it.label}
               className="flex items-center gap-3 text-sm font-medium text-ink"
             >
-              <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-accent-light text-primary">
-                <it.icon className="h-5 w-5" />
+              <span className="neon-icon inline-grid shrink-0 place-items-center text-primary">
+                <it.icon className="h-7 w-7" strokeWidth={1.75} />
               </span>
               {it.label}
             </div>

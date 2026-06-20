@@ -115,18 +115,18 @@ export function Hero() {
           transition={{ duration: 0.7, delay: 0.18, ease }}
           className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row"
         >
-          <Button asChild variant="accent" size="lg">
+          <Button asChild variant="accent" size="lg" className="h-14 gap-2.5 px-10 text-base sm:h-16 sm:text-lg">
             <Link href="/packages">
-              View packages <ArrowRight className="h-4 w-4" />
+              View packages <ArrowRight className="h-5 w-5" />
             </Link>
           </Button>
-          <Button asChild variant="light" size="lg">
+          <Button asChild variant="light" size="lg" className="h-14 gap-2.5 px-10 text-base sm:h-16 sm:text-lg">
             <a
               href={waLink(`Hi ${site.fullName}, I'd like to plan a trip.`)}
               target="_blank"
               rel="noreferrer"
             >
-              <WhatsAppIcon className="h-5 w-5 text-[#25d366]" /> Enquire on WhatsApp
+              <WhatsAppIcon className="h-6 w-6 text-[#25d366]" /> Enquire on WhatsApp
             </a>
           </Button>
         </motion.div>

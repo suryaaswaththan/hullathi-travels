@@ -62,7 +62,7 @@ export default function ContactPage() {
           <div>
             <BlurFade>
               <span className="eyebrow">
-                <span className="h-px w-6 bg-accent" /> Our office
+                <span className="h-[3px] w-7 rounded-full bg-accent" /> Our office
               </span>
               <h2 className="mt-4 text-balance">Reach us, {site.hours.toLowerCase()}</h2>
               <p className="mt-4 max-w-prose text-muted">

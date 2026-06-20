@@ -21,7 +21,7 @@ export function CtaBand() {
         <div className="relative mx-auto max-w-2xl">
           <BlurFade>
             <span className="eyebrow justify-center text-accent">
-              <span className="h-px w-6 bg-accent" /> Ready when you are
+              <span className="h-[3px] w-7 rounded-full bg-accent" /> Ready when you are
             </span>
           </BlurFade>
           <BlurFade delay={0.08}>

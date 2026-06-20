@@ -24,7 +24,7 @@ export function PageHero({ eyebrow, title, subtitle, image }: Props) {
         {eyebrow && (
           <BlurFade>
             <span className="eyebrow text-accent">
-              <span className="h-px w-6 bg-accent" />
+              <span className="h-[3px] w-7 rounded-full bg-accent" />
               {eyebrow}
             </span>
           </BlurFade>

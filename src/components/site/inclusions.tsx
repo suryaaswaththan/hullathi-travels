@@ -28,8 +28,8 @@ export function Inclusions() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-primary-dark via-primary-dark/40 to-transparent" />
               <div className="absolute inset-x-0 bottom-0 p-6 text-white">
-                <span className="mb-3 grid h-11 w-11 place-items-center rounded-full bg-accent text-primary-dark">
-                  <Icon className="h-5 w-5" />
+                <span className="neon-icon mb-3 inline-grid place-items-center text-accent">
+                  <Icon className="h-8 w-8" strokeWidth={1.75} />
                 </span>
                 <h3 className="font-display text-xl text-white">{item.title}</h3>
                 <p className="mt-1.5 text-sm leading-relaxed text-white/75">
