@@ -84,8 +84,8 @@ export function VehicleCarousel({ items }: { items: VehicleItem[] }) {
                 sizes="(max-width: 640px) 80vw, 440px"
                 className="object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-primary-dark/85 via-primary-dark/10 to-transparent" />
-              <div className="absolute inset-x-0 bottom-0 p-5 text-left text-white">
+              <div className="absolute inset-0 bg-gradient-to-t from-primary-dark via-primary-dark/55 to-transparent" />
+              <div className="absolute inset-x-0 bottom-0 p-5 text-left text-white [text-shadow:0_1px_8px_rgba(0,0,0,0.6)]">
                 <h3 className="font-display text-xl sm:text-2xl">{item.name}</h3>
                 <p className="mt-0.5 flex items-center gap-1.5 text-sm text-white/80">
                   <Users className="h-4 w-4 text-accent" />
