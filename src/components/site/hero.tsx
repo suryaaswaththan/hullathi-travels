@@ -20,19 +20,20 @@ export function Hero() {
   return (
     <section className="relative w-full">
       {/* Landing view — exactly one viewport tall, so the 4K video stays crisp (no stretch) */}
-      <div className="relative h-[100svh] overflow-hidden">
+      <div className="relative h-[100svh] overflow-hidden bg-primary-dark">
+        {/* Mobile: centre-crop to fill. Desktop: contain — never crop or stretch the 4K frame. */}
         <video
-          className="absolute inset-0 h-full w-full object-cover"
+          className="absolute inset-0 h-full w-full object-cover object-center md:object-contain"
           autoPlay
           muted
           loop
           playsInline
           preload="auto"
-          poster={asset("/images/hero-poster.jpg")}
+          poster={asset("/images/kerala-aerial-poster.jpg")}
           disablePictureInPicture
           disableRemotePlayback
         >
-          <source src={asset("/video/hero-bg.mp4")} type="video/mp4" />
+          <source src={asset("/video/kerala-aerial-4k.mp4")} type="video/mp4" />
         </video>
         <div className="absolute inset-0 bg-primary-dark/45" />
         <div className="absolute inset-0 bg-gradient-to-b from-primary-dark/55 via-transparent to-primary-dark/80" />
