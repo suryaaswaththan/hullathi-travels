@@ -499,11 +499,11 @@ export const inclusions = [
 export const stayTypes = ["Deluxe Rooms", "Cottages", "Home Stay", "Resorts"];
 
 export const fleet = [
-  { name: "Sedan", type: "Comfort · up to 4 guests", image: "/images/vehicle-kia-carens.jpg" },
-  { name: "SUV", type: "Premium · up to 6 guests", image: "/images/vehicle-xuv700.jpg" },
-  { name: "Innova", type: "Spacious · up to 7 guests", image: "/images/vehicle-kia-carnival.jpg" },
-  { name: "Tempo Traveller", type: "Groups · up to 12 guests", image: "/images/vehicle-kia-carnival.jpg" },
-  { name: "Bus", type: "Large groups · 20+ guests", image: "/images/vehicle-xuv700.jpg" },
+  { name: "Sedan", type: "Comfort · up to 4 guests", image: "/images/vehicle-sedan.jpg" },
+  { name: "SUV", type: "Premium · up to 6 guests", image: "/images/vehicle-suv.jpg" },
+  { name: "Innova", type: "Spacious · up to 7 guests", image: "/images/vehicle-innova.jpg" },
+  { name: "Tempo Traveller", type: "Groups · up to 12 guests", image: "/images/vehicle-tempo-traveller.jpg" },
+  { name: "Bus", type: "Large groups · 20+ guests", image: "/images/vehicle-bus.jpg" },
 ];
 
 /* ------------------------------- Reviews --------------------------------- */
