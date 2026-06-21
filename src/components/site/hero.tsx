@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useEffect, useRef } from "react";
 import { ArrowRight, ChevronDown } from "lucide-react";
 import { motion } from "framer-motion";
 import { site, waLink, asset } from "@/lib/site";
@@ -17,12 +18,29 @@ const stats = [
 const ease = [0.16, 1, 0.3, 1] as const;
 
 export function Hero() {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  // iOS/Android only autoplay a genuinely muted video. React often fails to apply
+  // the `muted` prop to the live element, so enforce it imperatively and kick off play.
+  useEffect(() => {
+    const v = videoRef.current;
+    if (!v) return;
+    v.muted = true;
+    v.defaultMuted = true;
+    const tryPlay = () => v.play().catch(() => {});
+    tryPlay();
+    // Retry once the tab/app regains focus (Low Power Mode often blocks the first attempt).
+    document.addEventListener("visibilitychange", tryPlay);
+    return () => document.removeEventListener("visibilitychange", tryPlay);
+  }, []);
+
   return (
     <section className="relative w-full">
       {/* Landing view — exactly one viewport tall, so the 4K video stays crisp (no stretch) */}
       <div className="relative h-[100svh] overflow-hidden bg-primary-dark">
         {/* Mobile: centre-crop to fill. Desktop: contain — never crop or stretch the 4K frame. */}
         <video
+          ref={videoRef}
           className="absolute inset-0 h-full w-full object-cover object-center md:object-contain"
           autoPlay
           muted
