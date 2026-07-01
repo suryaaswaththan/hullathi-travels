@@ -295,7 +295,7 @@ export const packages: Pkg[] = [
     ideal: "Where hills meet waterfalls",
     blurb:
       "Escape to nature — endless tea gardens, cool climate and the spectacular Athirapally falls on the Kerala border.",
-    image: "/images/hill-trek.jpg",
+    image: "/images/tour-athirapally.jpg",
     badge: "Nature Escape",
     route: ["Coimbatore", "Valparai", "Athirapally"],
     highlights: [
